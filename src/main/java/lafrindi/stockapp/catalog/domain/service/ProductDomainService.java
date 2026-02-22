@@ -6,7 +6,9 @@ import lafrindi.stockapp.catalog.domain.valueObject.CategoryId;
 import lafrindi.stockapp.catalog.domain.valueObject.Price;
 import lafrindi.stockapp.catalog.domain.valueObject.ProductId;
 import lafrindi.stockapp.catalog.domain.valueObject.Sku;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductDomainService {
 
     private final ProductRepository productRepository;
@@ -17,7 +19,7 @@ public class ProductDomainService {
 
     public Product createProduct(String name, Sku sku, Price price, Integer stock, CategoryId categoryId) {
 
-        // 🔥 règle métier : SKU unique
+
         productRepository.findBySku(sku).ifPresent(p -> {
             throw new IllegalArgumentException("SKU already exists");
         });
