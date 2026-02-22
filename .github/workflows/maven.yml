@@ -17,5 +17,5 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: compile with maven
       run: mvn compile
