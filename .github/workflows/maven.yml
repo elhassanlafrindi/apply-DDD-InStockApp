@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
 
 jobs:
   compile:
@@ -36,3 +39,14 @@ jobs:
 
       - name: Gitleaks Code Scan
         run: gitleaks detect source . -r gitleaks-report.json -f json
+
+  build:
+    # Only runs on push to main
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: [compile, security-check]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag lafrindi/ddd-stock-app:latest
