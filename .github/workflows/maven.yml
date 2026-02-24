@@ -52,5 +52,5 @@ jobs:
         run: docker build . --file Dockerfile --tag lafrindi/ddd-stock-app:latest
       - name: push image
         run: |
-          docker login -u lafrindi -p ${{docker_token}}
+          docker login -u lafrindi -p ${{secrets.DOCKER_TOKEN}}
           docker push lafrindi/ddd-stock-app:latest
