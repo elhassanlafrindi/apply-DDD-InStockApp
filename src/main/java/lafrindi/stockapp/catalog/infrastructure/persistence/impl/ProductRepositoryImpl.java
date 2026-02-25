@@ -8,7 +8,9 @@ import lafrindi.stockapp.catalog.infrastructure.persistence.jpa.entity.JpaProduc
 import lafrindi.stockapp.catalog.infrastructure.persistence.jpa.mapper.ProductPersistenceMapper;
 import lafrindi.stockapp.catalog.infrastructure.persistence.jpa.repository.JpaProductRepository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -39,5 +41,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public void delete(Product product) {
         jpaRepository.deleteById(product.getProductId().getValue());
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return jpaRepository.findAll().stream().map(ProductPersistenceMapper::toDomain).collect(Collectors.toList());
     }
 }

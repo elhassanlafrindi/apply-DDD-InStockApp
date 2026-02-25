@@ -39,4 +39,16 @@ public class Product {
     public void changeCategory(CategoryId categoryId) {
         this.categoryId = categoryId;
     }
+    
+    public void updateName(String newName) {
+        this.name = newName;
+    }
+    
+    public void updateSku(Sku newSku) {
+        this.sku = newSku;
+    }
+    
+    public void updateStockQuantity(Integer newStockQuantity) {
+        this.stockQuantity = newStockQuantity;
+    }
 }

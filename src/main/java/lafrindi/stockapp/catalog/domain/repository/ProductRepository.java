@@ -5,6 +5,7 @@ import lafrindi.stockapp.catalog.domain.valueObject.ProductId;
 import lafrindi.stockapp.catalog.domain.valueObject.Sku;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 @Repository
 public interface ProductRepository {
@@ -16,4 +17,5 @@ public interface ProductRepository {
     Optional<Product> findBySku(Sku sku);
 
     void delete(Product product);
+    List<Product> findAll();
 }

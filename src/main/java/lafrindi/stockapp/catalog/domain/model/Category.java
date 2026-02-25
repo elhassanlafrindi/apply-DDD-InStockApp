@@ -34,4 +34,8 @@ public class Category {
     public void changeParent(CategoryId newParentId) {
         this.parentCategoryId = newParentId;
     }
+    
+    public void updateDescription(String newDescription) {
+        this.description = newDescription;
+    }
 }
